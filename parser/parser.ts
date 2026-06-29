@@ -11,10 +11,10 @@ export interface Student {
 
 const text = fs.readFileSync("./data/raw.txt", "utf8");
 
-const blocks =
-    text.match(
-        /\[\d{1,2}:\d{2},.*?\][\s\S]*?(?=\n\s*\[\d{1,2}:\d{2},|\s*$)/g
-    ) ?? [];
+const blocks = text
+    .split(/(?=^(?:\[\d{1,2}:\d{2},.*?\]\s*.*?:\s*)?Name\s*[:-])/gim)
+    .map(b => b.trim())
+    .filter(Boolean);
 
 function field(block: string, key: string): string {
     const regex = new RegExp(
@@ -29,7 +29,6 @@ function field(block: string, key: string): string {
             .trim() ?? ""
     );
 }
-
 export const students: Student[] = [];
 
 for (const block of blocks) {
