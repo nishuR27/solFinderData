@@ -1,0 +1,17 @@
+{
+  "name": "intershipdata",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run excel/export.ts"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^26.0.1",
+    "@types/xlsx": "^0.0.36",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
